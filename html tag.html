@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML标签</title>
+    <style>
+      /* 选择器 */
+      p {
+        font-size: 24px;
+      }
+      .red {
+        color: brown;
+      }
+      .weizhi {
+        color: rgb(237, 231, 243);
+        width: 60px;
+        height: 60px;
+        background-color: gray;
+        margin: 20px;
+      }
+      .flex {
+        width: 600px;
+        height: 500px;
+        border: 1px solid;
+        display: flex;
+        /*  主轴为水平方向，起点在右端。*/
+        flex-direction: rew-reverse;
+        /* 在株洲线上换行 */
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>标签测试</h1>
+    <button>这是按钮</button>
+    <input type="text" value="输入框" />
+    <p>这是p标签</p>
+    <b>加粗的b标签</b>
+    <a href="">连接标签</a>
+    <p class="red">这是加有class的p标签</p>
+    <p>这是p标签</p>
+    <p class="red">这是加有class的p标签</p>
+    <p>这是p标签</p>
+    <img
+      src="as.jpg"
+      alt="tupian"
+      width="50px
+    "
+    />
+    <img
+      src="sda.jpg"
+      alt="tupian"
+      width="50px
+    "
+    />
+    <img
+      src="rc.jpeg"
+      alt="tupian"
+      width="50px
+    "
+    />
+    <div class="flex">
+      <p class="weizhi">1</p>
+      <p class="weizhi" style="flex-grow: 1">2</p>
+      <p class="weizhi" style="flex-grow: 3">3</p>
+      <p class="weizhi">4</p>
+      <p class="weizhi">4</p>
+      <p class="weizhi">4</p>
+      <p class="weizhi" style="color: aqua; width: 50px; padding: 100px">4</p>
+      <p class="weizhi">4</p>
+      <p class="weizhi">4</p>
+      <p class="weizhi">4</p>
+      <p class="weizhi">4</p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>flex布局</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        /* background-color: rgb(196, 126, 126); */
+      }
+      /* * {
+        border: 1px solid black;
+      } */
+      .flex {
+        display: flex;
+      }
+      .baise {
+        background-color: white;
+      }
+      .flex1 {
+        flex: 1;
+      }
+      .column {
+        flex-direction: column;
+      }
+      .mg8 {
+        margin: 8px;
+      }
+      .mgr8 {
+        margin-right: 8px;
+      }
+      .mgt8 {
+        margin-top: 8px;
+      }
+      .yinying {
+        box-shadow: 2px 2px 5px rgb(234, 96, 96);
+      }
+      .daohang {
+        padding: 10px 20px;
+        border-bottom: 1px solid grey;
+        font-size: 14px;
+      }
+      .juzhong {
+        display: flex;
+        justify-content: center;
+      }
+      /* 当媒体小于600px改变css */
+      @media (max-width: 600px) {
+        .cebianlan {
+          display: none;
+        }
+        .neiroong {
+          flex-direction: column;
+        }
+        .shuju {
+          flex-direction: column;
+        }
+        .youqu {
+          margin-left: 8px;
+        }
+        .shujukuai {
+          margin: 0 0 8px;
+        }
+      }
+    </style>
+  </head>
+  <body class="flex">
+    <!-- 侧边 -->
+    <div style="width: 200px; z-index: 2" class="baise yinying cebianlan">
+      <!-- 头像栏目 -->
+      <div
+        style="
+          padding: 10px;
+          align-items: center;
+          justify-self: center;
+          border-bottom: 1px solid gray;
+        "
+        class="flex"
+      >
+        <img src="as.jpg" alt="" width="40px" />
+        <div style="margin-left: 10px">cui</div>
+      </div>
+      <!-- 导航栏 -->
+      <div class="flex1">
+        <div class="daohang">菜单第一项</div>
+        <div class="daohang">菜单第二项</div>
+        <div class="daohang">菜单第三项</div>
+        <div class="daohang">菜单第四项</div>
+      </div>
+    </div>
+    <!-- 主区 -->
+    <div class="flex1 flex column">
+      <!-- 头部 -->
+      <div style="height: 60px; z-index: 1" class="baise yinying">
+        <!-- 显示当前时间 -->
+
+        <div id="dateTime" class="flex" style="justify-content: center">
+          <script>
+            Date.prototype.format = function (fmt) {
+              var o = {
+                "y+": this.getFullYear, //年
+                "M+": this.getMonth() + 1, //月份
+                "d+": this.getDate(), //日
+                "h+": this.getHours(), //小时
+                "m+": this.getMinutes(), //分
+                "s+": this.getSeconds(), //秒
+              };
+              if (/(y+)/.test(fmt))
+                fmt = fmt.replace(
+                  RegExp.$1,
+                  (this.getFullYear() + "").substr(4 - RegExp.$1.length)
+                );
+              for (var k in o)
+                if (new RegExp("(" + k + ")").test(fmt))
+                  fmt = fmt.replace(
+                    RegExp.$1,
+                    RegExp.$1.length == 1
+                      ? o[k]
+                      : ("00" + o[k]).substr(("" + o[k]).length)
+                  );
+              return fmt;
+            };
+            setInterval(
+              "document.getElementById('dateTime').innerHTML = (new Date()).format('yyyy-MM-dd hh:mm:ss');",
+              1000
+            );
+          </script>
+        </div>
+        <a
+          class="flex"
+          target="_blank"
+          style="justify-content: center"
+          href="https://space.bilibili.com/34786453"
+          >不要点我</a
+        >
+      </div>
+      <!-- 内容区 -->
+      <div class="flex1 flex neiroong" style="overflow: auto">
+        <!-- zuo -->
+        <div style="flex: 3" class="flex column mg8">
+          <!-- 数据 -->
+          <div class="flex shuju">
+            <!-- 数据块 -->
+            <div
+              style="height: 100px"
+              class="flex1 baise mgr8 yinying shujukuai"
+            >
+              <p class="juzhong">今天学习了吗</p>
+            </div>
+            <div
+              style="height: 100px"
+              class="flex1 baise mgr8 yinying shujukuai"
+            >
+              <p class="juzhong">睡够了吗</p>
+            </div>
+            <div
+              style="height: 100px"
+              class="flex1 baise mgr8 yinying shujukuai"
+            >
+              <p class="juzhong">锻炼了吗</p>
+            </div>
+            <div style="height: 100px；" class="flex1 baise yinying shujukuai">
+              <p style="display: flex; justify-content: center">进步了吗</p>
+            </div>
+          </div>
+          <!-- 列表 -->
+          <div class="flex column">
+            <!-- 列表项 -->
+            <div style="height: 150px" class="baise mgt8 yinying">内容1</div>
+            <div style="height: 150px" class="baise mgt8 yinying">内容2</div>
+            <div style="height: 150px" class="baise mgt8 yinying">内容3</div>
+            <div style="height: 150px" class="baise mgt8 yinying">内容4</div>
+            <div style="height: 150px" class="baise mgt8 yinying">内容5</div>
+            <div style="height: 150px" class="baise mgt8 yinying">内容6</div>
+          </div>
+        </div>
+        <!-- you -->
+        <div style="flex: 1" class="flex column mgr8 mgt8 youqu">
+          <!-- 提示区 -->
+          <div style="height: 150px" class="baise yinying">右侧上边</div>
+          <!-- 消息区 -->
+          <div style="height: 300px" class="baise mgt8 yinying">右侧下边</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

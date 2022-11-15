@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>睡眠时钟设置</title>
+    <style>
+      .box {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+      h1 {
+        margin: 0;
+        text-align: center;
+      }
+      .shangbox {
+        width: 300px;
+        border-radius: 10px;
+        background: #fdfdfd;
+        box-shadow: 15px 15px 30px #e9e8e8, -15px -15px 30px #ffffff;
+        margin: 10px;
+        padding-bottom: 10px;
+      }
+      .xiabox {
+        width: 300px;
+        border-radius: 10px;
+        background: #fdfdfd;
+        box-shadow: 15px 15px 30px #e9e8e8, -15px -15px 30px #ffffff;
+        margin: 10px;
+        padding: 10px;
+        padding-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body onload="showTime()">
+    <div class="box">
+      <div class="box shangbox" style="background-color: #d7fbe8" >
+        <p>当前时间</p>
+        <h1 id="time">111111</h1>
+      </div>
+      <div class="box xiabox">
+        <p>5个睡眠周期（7.5小时）</p>
+        <h1 id="wu" style="color: #62d2a2">2222</h1>
+        <hr style="border: 0.4px solid rgb(208, 208, 208); width: 250px" />
+        <p>4个睡眠周期（6小时）</p>
+        <h1 id="si" style="color: #9df3c4">33333</h1>
+        <hr style="border: 0.4px solid rgb(208, 208, 208); width: 250px" />
+        <p>6个睡眠周期（9小时）</p>
+        <h1 id="liu" style="color: #1fab89">4444</h1>
+      </div>
+    </div>
+    <script>
+      function showTime() {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1; //因为month属性从0开始所以加1
+        var day = date.getDate(); // 日
+        var week = date.getDay(); // 星期几，是个数字
+        var hour = date.getHours();
+        var minute = date.getMinutes();
+        var second = date.getSeconds();
+        second = second < 10 ? "0" + second : second;
+        var current = hour + ":" + minute + ":" + second;
+        document.getElementById("time").innerHTML = current; //显示当前时间
+        //5个睡眠周期
+        hour1 = parseInt((minute + 450) / 60);
+        hour11 = hour + hour1;
+        if (hour11 > 24) {
+          hour11 %= 24;
+        }
+        minute1 = (minute + 450) % 60;
+        document.getElementById("wu").innerHTML =
+          hour11 + ":" + minute1 + ":" + second;
+        //4个睡眠周期
+        hour1 = parseInt((minute + 360) / 60);
+        hour11 = hour + hour1;
+        if (hour11 > 24) {
+          hour11 %= 24;
+        }
+        minute1 = (minute + 360) % 60;
+        document.getElementById("si").innerHTML =
+          hour11 + ":" + minute1 + ":" + second;
+        //6个睡眠周期
+        hour1 = parseInt((minute + 540) / 60);
+        hour11 = hour + hour1;
+        if (hour11 > 24) {
+          hour11 %= 24;
+        }
+        minute1 = (minute + 540) % 60;
+        document.getElementById("liu").innerHTML =
+          hour11 + ":" + minute1 + ":" + second;
+      }
+
+      setInterval("showTime()", 1000); //每隔1000毫秒（即1秒）显示一次当前时间
+    </script>
+  </body>
+</html>
